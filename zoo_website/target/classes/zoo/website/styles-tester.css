@@ -1,0 +1,21 @@
+/* styles.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.circle-container {
+    width: 200px;
+    height: 200px;
+}
+
+.circle {
+    fill: none;
+    stroke: red; /* Perimeter color */
+    stroke-width: 5; /* Perimeter width */
+    stroke-dasharray: 600; /* Set to the circumference of the circle (2 * π * r) */
+    transition: stroke-dashoffset 1s linear; /* Animation for perimeter depletion */
+}

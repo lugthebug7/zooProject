@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <!--full screen content-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="styles.css">
+    <title>Zoo Controls</title>
+</head>
+<body>
+    <div class="root-container">
+        <div class="animal-box-container">
+            <div class="gorilla-box">
+                <div class="food-door-status-container">
+                    <div class="progress-bar">
+                        <progress value="75" min="0" max="100" style="visibility:hidden;height:0;width:0;">75%</progress>
+                    </div>
+
+
+                    <div class="gate-status"></div>
+                </div>
+            </div>
+            <div class="bird-box">
+                <div class="food-door-status-container">
+                    <div class="food-status"></div>
+                    <div class="gate-status"></div>
+                </div>
+            </div>
+            <div class="lizard-box">
+                <div class="food-door-status-container">
+                    <div class="food-status"></div>
+                    <div class="gate-status"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-container">
+            <div class="food-door-buttons-container">
+                <button class="food-button" id="foodButton"></button>
+                <button class="gate-button" id="foodButton"></button>
+            </div>
+            <div class="animal-toggle-container">
+                <button class="animal-toggle" id="gorilla-toggle"></button>
+                <button class="animal-toggle" id="bird-toggle"></button>
+                <button class="animal-toggle" id="lizard-toggle"></button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
