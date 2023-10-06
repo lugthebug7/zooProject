@@ -1,140 +1,112 @@
-/*body {
-     display: allows for flex container usage
-    justify-content: relates to x-axis
-    align-items: relates to y-axis
-    height: 100% of view height
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: darkslateblue;
-}*/
-
 body {
     width: 100vw;
     height: 100vh;
     margin: 0;
     padding: 0;
-    background-color: white;
+    background-color: #36311F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .root-container {
     width: 100%;
     height: 100%;
+    flex: 1;
     display: flex;
-    flex-direction: column; /* Ensure vertical alignment of containers */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    margin-left: 100px;
+    margin-bottom: 50px;
+
+}
+
+.row1 {
+    height: 175px;
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    border-top: 2px solid #B48E92;
+}
+
+.row2 {
+  height: 175px;
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  border-top: 0.1px solid #B48E92;
+}
+
+.row3 {
+  height: 175px;
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  border-top: 0.1px solid #B48E92;
+  border-bottom: 2px solid #B48E92;
+}
+
+.left-container-gorilla, .left-container-bird, .left-container-dog {
+    height: 100%;
+    width: 100%;
+    flex: 1;
+    background-color: azure;
+    border-left: 2px solid #B48E92;
+}
+
+.left-container-gorilla {
+    background-image: url('images/gorilla-dark.jpeg'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+}
+
+.left-container-bird {
+    background-image: url('images/owl-photo-dark.jpeg'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+}
+
+.left-container-dog {
+    background-image: url('images/dog-dark.jpeg'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+}
+
+.right-container {
+    height: 100%;
+    width: 100%;
+    flex: 3;
+    background-color: black;
+
+    border-right: 2px solid #B48E92;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
-.animal-box-container {
-    display: flex;
-    align-items: flex-start; /* Align items to the top */
-    justify-self: flex-start;
-    justify-content: center;
-    padding: 10px; /* Optional padding for spacing */
+.schedule-button {
+    margin-top: 0px; 
 }
 
-.gorilla-box, .bird-box, .lizard-box {
-    width: 275px; /* Adjust the width as needed */
-    height: 175px;
-    padding: 10px;
-    align-items: flex-end;
-    background-color: white; /* Background color for each container */
-    border: 2px solid black;
-}
-
-.gorilla-box {
-    background-image: url('images/gorilla2.jpg'); /* Set the path to your image file */
-    background-size: cover; /* Scale the image to cover the entire button */
-    background-repeat: no-repeat; 
-}
-
-
-.bird-box {
-    background-image: url('images/bird.jpg'); /* Set the path to your image file */
-    background-size: cover; /* Scale the image to cover the entire button */
-    background-repeat: no-repeat; 
-}
-
-
-.lizard-box {
-    background-image: url('images/lizard.jpg'); /* Set the path to your image file */
-    background-size: cover; /* Scale the image to cover the entire button */
-    background-repeat: no-repeat; 
-}
-
-
-
-
-
-
-
-.control-container {
-    display: flex;
-    flex-direction: column; /* Stack containers vertically */
-    align-items: center; /* Center horizontally within the parent container */
-    justify-content: flex-start; /* Align containers to the top */
-    width: 400px;
-    height: 200px;
-    padding: 20px;
-    margin-top: 50px;
-    background-color: burlywood;
-}
-
-
-.food-door-buttons-container {
-    display: flex;
-    justify-content: space-between; /* Space elements apart */
-    align-items: center; /* Center vertically within the container */
-    background-color: gray;
-    margin-top: 20px;
-}
-
-.food-button{
-    width: 75px; /* Set the width and height to create a circle */
-    height: 75px;
-    border-radius: 50%; /* Make it a circle */
-    background-image: url('images/foodSymbol.jpeg'); /* Set the path to your image file */
-    background-size: cover; /* Scale the image to cover the entire button */
-    background-repeat: no-repeat; /* Prevent image from repeating */
-    cursor: pointer; /* Change cursor to pointer on hover (optional) */
+.food-button {
+    width: 30px;
+    height: 30px;
+    padding: 0; 
+    border: none; 
+    background: url('images/foodSymbol.jpeg') center/cover no-repeat; 
+    border-radius: 50%; 
+    cursor: pointer;
     margin-right: 50px;
-    border: 2px solid black;
 }
-
-.gate-button{
-    width: 75px; /* Set the width and height to create a circle */
-    height: 75px;
-    border-radius: 50%; /* Make it a circle */
-    background-image: url('images/gateSymbol_cropped.jpg'); /* Set the path to your image file */
-    background-size: cover; /* Scale the image to cover the entire button */
-    background-repeat: no-repeat; /* Prevent image from repeating */
-    cursor: pointer; /* Change cursor to pointer on hover (optional) */
-    margin-left: 50px;
-    border: 2px solid black;
-}
-
-
-
-.gate-button:hover {
-    filter: brightness(90%);
-}
-.gate-button.selected {
-    animation: flash 1s infinite alternate;
-}
-
-@keyframes flash {
-    0% {
-        filter: brightness(0%);
-    }
-    100% {
-        filter: brightness(100%);
-    }
-}
-
-
 .food-button:hover {
     filter: brightness(90%);
 }
@@ -142,72 +114,463 @@ body {
 
 
 
-/* CHILD OF C-C */
-.animal-toggle-container{
-    display: flex;
-    justify-content: space-between; /* Space elements apart */
-    align-items: center; /* Center vertically within the container */
-    margin-top: 20px;
-    width: 125px;
-    background-color: gray;
-
-}
-
-.animal-toggle {
-    position: relative;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: red;
-    margin: 2px;
-    cursor: pointer;
-}
 
 
 
-
-.food-door-status-container {
-    display: flex;
-    justify-content: center; /* Space elements apart */
-    align-items: center; /* Center vertically within the container */
-    align-self: flex-end;
-    margin-top: 115px;
-}
-
-.food-status {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-image: url('images/foodSymbol.jpeg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin-right: 20px;
+.gate-button{
+    width: 75px; 
+    height: 75px;
+    border-radius: 50%; 
+    background-image: url('images/gateSymbol_cropped.jpg'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    cursor: pointer; 
+    margin-left: 50px;
     border: 2px solid black;
-    filter: brightness(100%);
+}
+.gate-button:hover {
+    filter: brightness(90%);
+}
+.flash {
+    animation: flash 220ms infinite alternate;
+}
+@keyframes flash {
+    from {
+        filter: brightness(100%);
+    }
+    to {
+        filter: brightness(65%);
+        border: 2px solid red;
+    }
 }
 
-.progress-bar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-right: 20px;
-    background: 
-      radial-gradient(closest-side, white 79%, transparent 80% 100%),
-      conic-gradient(red 75%, black 0);    
+
+
+.foodContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 
 
-  .gate-status {
-    width: 60px; /* Set the width and height to create a circle */
-    height: 60px;
-    border-radius: 50%; /* Make it a circle */
-    background-image: url('images/gateSymbol_cropped.jpg'); /* Set the path to your image file */
-    background-size: cover; /* Scale the image to cover the entire button */
-    background-repeat: no-repeat; /* Prevent image from repeating */
-    margin-left: 20px;
-    border: 2px solid black;
-    transition: background-color 0.3s ease;
-    filter: brightness(100%);
+
+
+
+circle {
+    transition: all 1ms linear;
+  }
+  #c1{
+    transition: all 1ms linear;
+    stroke: black;
+    stroke-width: 3px;;
+    stroke-linecap: butt;
+    fill: transparent;
+  }
+  
+  #c2 {
+    transition: all 1ms linear;
+    stroke: red;
+    stroke-width: 3px;
+    stroke-linecap: butt;
+    fill: transparent;
+  }
+
+  #c2.selected {
+    stroke: green;
+  }
+
+  #c3{
+    transition: all 1ms linear;
+    stroke: black;
+    stroke-width: 3px;;
+    stroke-linecap: butt;
+    fill: transparent;
+  }
+  
+  #c4 {
+    transition: all 1ms linear;
+    stroke: red;
+    stroke-width: 3px;
+    stroke-linecap: butt;
+    fill: transparent;
+  }
+
+  #c4.selected {
+    stroke: green;
+  }
+
+  #c5{
+    transition: all 1ms linear;
+    stroke: black;
+    stroke-width: 3px;;
+    stroke-linecap: butt;
+    fill: transparent;
+  }
+  
+  #c6 {
+    transition: all 1ms linear;
+    stroke: red;
+    stroke-width: 3px;
+    stroke-linecap: butt;
+    fill: transparent;
+  }
+
+  #c6.selected {
+    stroke: green;
+  }
+
+
+
+.modalGorilla, .modalBird, .modalDog {
+    display: none;
+    width: 140px;
+    height: 75px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #B48E92;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: center; 
+    align-items: flex-start; 
+    margin-bottom: 5px;
+}
+
+.close-button {
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0; 
+    border: none;
+    background: none; 
+    margin-left: 141px; 
+    margin-top: -17px;
+}
+
+#instructions {
+  color: white;
+  font-size: 9px;
+}
+
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 999;
+  }
+
+
+  #activateGorillaFeed {
+    margin-top: 10px;
+    margin-left: 39px;
+  }
+  #activateGorillaFeed.activated {
+    margin-top: 10px;
+    margin-left: 32px;
+  }
+
+
+
+  #activateBirdFeed {
+    margin-top: 10px;
+    margin-left: 39px;
+  }
+  #activateBirdFeed.activated {
+    margin-top: 10px;
+    margin-left: 32px;
+  }
+
+
+
+  #activateDogFeed {
+    margin-top: 10px;
+    margin-left: 39px;
+  }
+  #activateDogFeed.activated {
+    margin-top: 10px;
+    margin-left: 32px;
+  }
+
+  .tab1 {
+    width: 70px;
+    height: 35px;
+    background: #B48E92;
+    cursor: pointer;
+    margin-right: 0px;
+    font-size: 12;
+    padding-left: 0px;
+    padding-top: 4px;
+    padding-bottom: 5px;
+    color: black;
+    text-align: center;
+    border-top: 2px solid #B48E92;
+    border-left: 2px solid #B48E92;
+    border-right: 2px solid #B48E92;
+    position: relative;
+    left: 426px;
+    top: 0px;
+  }
+
+  .tab1:hover {
+    filter: brightness(90%);
+  }
+
+ 
+
+
+  .left-container-red, .left-container-green, .left-container-blue {
+    height: 100%;
+    width: 100%;
+    flex: 1;
+    border-left: 2px solid #B48E92;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 28px; 
+    font-weight: bolder; 
+}
+
+.left-container-red {
+  background-color: darkred;
+    
+}
+
+.left-container-green {
+    background-color: darkolivegreen;
+}
+
+.left-container-blue {
+    background-color: darkslateblue;
+}
+
+
+
+
+
+
+
+
+
+#c11{
+  transition: all 1ms linear;
+  stroke: black;
+  stroke-width: 3px;;
+  stroke-linecap: butt;
+  fill: transparent;
+}
+
+#c12 {
+  transition: all 1ms linear;
+  stroke: red;
+  stroke-width: 3px;
+  stroke-linecap: butt;
+  fill: transparent;
+}
+
+#c12.selected {
+  stroke: green;
+}
+
+#c13{
+  transition: all 1ms linear;
+  stroke: black;
+  stroke-width: 3px;;
+  stroke-linecap: butt;
+  fill: transparent;
+}
+
+#c14 {
+  transition: all 1ms linear;
+  stroke: red;
+  stroke-width: 3px;
+  stroke-linecap: butt;
+  fill: transparent;
+}
+
+#c14.selected {
+  stroke: green;
+}
+
+#c15{
+  transition: all 1ms linear;
+  stroke: black;
+  stroke-width: 3px;;
+  stroke-linecap: butt;
+  fill: transparent;
+}
+
+#c16 {
+  transition: all 1ms linear;
+  stroke: red;
+  stroke-width: 3px;
+  stroke-linecap: butt;
+  fill: transparent;
+}
+
+#c16.selected {
+  stroke: green;
+}
+
+
+
+.modalZone1, .modalZone2, .modalZone3 {
+  display: none;
+  width: 140px;
+  height: 75px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: center; 
+  align-items: flex-start; 
+  margin-bottom: 5px;
+}
+
+.close-button {
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0; 
+  border: none; 
+  background: none; 
+  margin-left: 141px; 
+  margin-top: -17px;
+}
+
+
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 999;
+}
+
+
+#activateZone1Sprinkler {
+  margin-top: 10px;
+  margin-left: 39px;
+}
+#activateZone1Sprinkler.activated {
+  margin-top: 10px;
+  margin-left: 32px;
+}
+
+
+
+#activateZone2Sprinkler {
+  margin-top: 10px;
+  margin-left: 39px;
+}
+#activateZone2Sprinkler.activated {
+  margin-top: 10px;
+  margin-left: 32px;
+}
+
+
+
+#activateZone3Sprinkler {
+  margin-top: 10px;
+  margin-left: 39px;
+}
+#activateZone3Sprinkler.activated {
+  margin-top: 10px;
+  margin-left: 32px;
+}
+
+
+
+
+.sprinkler-button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none; 
+  background: url('images/sprinkler.jpeg') center/cover no-repeat;
+  border-radius: 50%; 
+  cursor: pointer;
+  margin-right: 50px;
+}
+.sprinkler-button:hover {
+  filter: brightness(90%);
+}
+
+
+.emergency-controls-container {
+  width: 150px;
+  height: 150px;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 100px;
+  border: 2px solid #B48E92;
+  color: white;
+  
+}
+
+.emergency-controls-container button {
+  margin-bottom: 5px;
+}
+
+#emergency-feed-button {
+  margin-top: 15px;
+  margin-left: 45px;
+}
+
+#close-gate {
+  margin-left: 32px;
+  margin-top: 5px;
+
+}
+
+#open-gate {
+  margin-left: 33px;
+  margin-top: 5px;
+
+}
+
+#on-sprinkler {
+  margin-left: 0px;
+  margin-top: 40px;
+  margin-bottom: 43px;
+  
+
+}
+
+
+.super-root-container {
+  width: 1000px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
 }
 
 

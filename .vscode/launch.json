@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open index.html",
-            "file": "/Users/luke/Desktop/hci_class/zooProject/zoo_website/src/main/java/zoo/website/index-tester.html"
+            "file": "/Users/lukepotter/Desktop/HCI/zooProject copy/zoo_website/src/main/java/zoo/website/index.html"
         }
     ]
 }
