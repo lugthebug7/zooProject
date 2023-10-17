@@ -168,7 +168,7 @@ function startTimerGorilla(duration) {
     document.getElementById("c2").style.strokeDasharray = [100, 0];
 
     document.getElementById("c2").style.strokeDashoffset = 0;
-    gorillaInstructions.textContent = "Feed Gorilla in " + (time) + " seconds";
+    gorillaInstructions.textContent = "Feed in " + (time) + " seconds";
     intervalIdGorilla = setInterval(function () {
         if (i < time / 2){
             gorillaButton.classList.toggle("tooSoon", true);
@@ -194,22 +194,33 @@ function startTimerGorilla(duration) {
 
         document.getElementById("c2").style.strokeDashoffset = 0;
         console.log(time, i, k, l, document.getElementById("c2").style.strokeDashoffset);
-        gorillaInstructions.textContent = "Feed Gorilla in " + (time  - i + 1) + " seconds";
+        if (gorillaInstructions.textContent != "Do Not Overfeed!") {
+            gorillaInstructions.textContent = "Feed in " + (time  - i + 1) + " seconds";
+        }
         i++;
     }, 1000);
+
+
+    gorillaButton.addEventListener("click", function () {
+        if (gorillaButton.classList.contains("tooSoon")) {
+            gorillaInstructions.textContent = "Do Not Overfeed!";
+        
+            setTimeout(() => {
+                gorillaInstructions.textContent = gorillaInstructions.textContent = "Feed in " + (time  - i + 1) + " seconds"; // Clear the message after 3 seconds
+            }, 2000); 
+            return;
+        }
+        if (gorillaButton.classList.contains("flash")) {
+            gorillaButton.classList.remove("flash"); 
+        }
+        clearInterval(intervalIdGorilla); 
+        gorillaFeedTime = gorillaFeedTimeInput.value;
+        startTimerGorilla(gorillaFeedTime);
+    });
 }
 
 
-gorillaButton.addEventListener("click", function () {
-    if (gorillaButton.classList.contains("tooSoon")) {
-        return;}
-    if (gorillaButton.classList.contains("flash")) {
-        gorillaButton.classList.remove("flash"); 
-    }
-    clearInterval(intervalIdGorilla); 
-    gorillaFeedTime = gorillaFeedTimeInput.value;
-    startTimerGorilla(gorillaFeedTime);
-});
+
 
 
 
@@ -236,7 +247,7 @@ function startTimerBird(duration) {
     document.getElementById("c4").style.strokeDasharray = [100, 0];
 
     document.getElementById("c4").style.strokeDashoffset = 0;
-
+    birdInstructions.textContent = "Feed in " + (time) + " seconds";
     intervalIdBird = setInterval(function () {
         if (i < time / 2){
             birdButton.classList.toggle("tooSoon", true);
@@ -261,23 +272,31 @@ function startTimerBird(duration) {
         document.getElementById("c4").style.strokeDasharray = [k, l];
 
         document.getElementById("c4").style.strokeDashoffset = 0;
-        birdInstructions.textContent = "Feed Bird in " + (time - i) + " seconds";
+        if (birdInstructions.textContent != "Do Not Overfeed!") {
+            birdInstructions.textContent = "Feed in " + (time - i) + " seconds";
+        }
         i++;
     }, 1000);
+
+    birdButton.addEventListener("click", function () {
+        if (birdButton.classList.contains("tooSoon")) {
+            birdInstructions.textContent = "Do Not Overfeed!";
+
+            setTimeout(() => {
+                birdInstructions.textContent = birdInstructions.textContent = "Feed in " + (time - i) + " seconds";
+            }, 2000);
+            return;}
+        if (birdButton.classList.contains("flash")) {
+            birdButton.classList.remove("flash"); 
+        }
+        clearInterval(intervalIdBird);
+        birdFeedTime = birdFeedTimeInput.value;
+        startTimerBird(birdFeedTime);
+    });
 }
 
 
 
-birdButton.addEventListener("click", function () {
-    if (birdButton.classList.contains("tooSoon")) {
-        return;}
-    if (birdButton.classList.contains("flash")) {
-        birdButton.classList.remove("flash"); 
-    }
-    clearInterval(intervalIdBird);
-    birdFeedTime = birdFeedTimeInput.value;
-    startTimerBird(birdFeedTime);
-});
 
 
 
@@ -297,7 +316,7 @@ function startTimerDog(duration) {
     document.getElementById("c6").style.strokeDasharray = [100, 0];
 
     document.getElementById("c6").style.strokeDashoffset = 0;
-
+    dogInstructions.textContent = "Feed in " + (time) + " seconds";
     intervalIdDog = setInterval(function () {
         if (i < time / 2){
             dogButton.classList.toggle("tooSoon", true);
@@ -323,9 +342,27 @@ function startTimerDog(duration) {
         document.getElementById("c6").style.strokeDasharray = [k, l];
 
         document.getElementById("c6").style.strokeDashoffset = 0;
-        dogInstructions.textContent = "Feed Dog in " + (time - i) + " seconds";
+        if (dogInstructions.textContent != "Do Not Overfeed!") {
+            dogInstructions.textContent = "Feed in " + (time - i) + " seconds";
+        }
         i++;
     }, 1000);
+
+    dogButton.addEventListener("click", function () {
+        if (dogButton.classList.contains("tooSoon")) {
+            dogInstructions.textContent = "Do Not Overfeed!";
+
+            setTimeout(() => {
+                dogInstructions.textContent = dogInstructions.textContent = "Feed in " + (time - i) + " seconds";
+            }, 2000);
+            return;}
+        if (dogButton.classList.contains("flash")) {
+            dogButton.classList.remove("flash"); 
+        }
+        clearInterval(intervalIdDog); 
+        dogFeedTime = dogFeedTimeInput.value;
+        startTimerDog(dogFeedTime);
+    });
 }
 
 
@@ -362,16 +399,7 @@ function openDogModal() {
   }
 
 
-  dogButton.addEventListener("click", function () {
-    if (dogButton.classList.contains("tooSoon")) {
-        return;}
-    if (dogButton.classList.contains("flash")) {
-        dogButton.classList.remove("flash"); 
-    }
-    clearInterval(intervalIdDog); 
-    dogFeedTime = dogFeedTimeInput.value;
-    startTimerDog(dogFeedTime);
-});
+
 
 
 
@@ -643,22 +671,32 @@ function startTimerZone1(duration) {
         document.getElementById("c12").style.strokeDasharray = [k, l];
 
         document.getElementById("c12").style.strokeDashoffset = 0; 
-        zone1Instructions.textContent = "Water Zone 1 in " + (time - i + 1) + " seconds";
+        if (zone1Instructions.textContent != "Do Not Overwater!") {
+            zone1Instructions.textContent = "Water Zone 1 in " + (time - i + 1) + " seconds";
+        }
         i++;
     }, 1000);
+
+    zone1Button.addEventListener("click", function () {
+        if (zone1Button.classList.contains("tooSoon")) {
+            zone1Instructions.textContent = "Do Not Overwater!";
+
+            setTimeout(() => {
+                zone1Instructions.textContent = zone1Instructions.textContent = "Water Zone 1 in " + (time - i + 1) + " seconds";
+            }
+            , 2000);
+            return;}
+        if (zone1Button.classList.contains("flash")) {
+            zone1Button.classList.remove("flash"); 
+        }
+        clearInterval(intervalIdZone1); 
+        zone1Time = zone1TimeInput.value;
+        startTimerZone1(zone1Time);
+    });
 }
 
 
-zone1Button.addEventListener("click", function () {
-    if (zone1Button.classList.contains("tooSoon")) {
-        return;}
-    if (zone1Button.classList.contains("flash")) {
-        zone1Button.classList.remove("flash"); 
-    }
-    clearInterval(intervalIdZone1); 
-    zone1Time = zone1TimeInput.value;
-    startTimerZone1(zone1Time);
-});
+
 
 
 
@@ -710,23 +748,33 @@ function startTimerZone2(duration) {
         document.getElementById("c14").style.strokeDasharray = [k, l];
 
         document.getElementById("c14").style.strokeDashoffset = 0; 
-        zone2Instructions.textContent = "Water Zone 2 in " + (time - i + 1) + " seconds";
+        if (zone2Instructions.textContent != "Do Not Overwater!") {
+            zone2Instructions.textContent = "Water Zone 2 in " + (time - i + 1) + " seconds";
+        }
         i++;
     }, 1000);
+
+    zone2Button.addEventListener("click", function () {
+        if (zone2Button.classList.contains("tooSoon")) {
+            zone2Instructions.textContent = "Do Not Overwater!";
+
+            setTimeout(() => {
+                zone2Instructions.textContent = zone2Instructions.textContent = "Water Zone 2 in " + (time - i + 1) + " seconds";
+            }
+            , 2000);
+            return;}
+        if (zone2Button.classList.contains("flash")) {
+            zone2Button.classList.remove("flash"); 
+        }
+        clearInterval(intervalIdZone2); 
+        zone2Time = zone2TimeInput.value;
+        startTimerZone2(zone2Time);
+    });
 }
 
 
 
-zone2Button.addEventListener("click", function () {
-    if (zone2Button.classList.contains("tooSoon")) {
-        return;}
-    if (zone2Button.classList.contains("flash")) {
-        zone2Button.classList.remove("flash"); 
-    }
-    clearInterval(intervalIdZone2); 
-    zone2Time = zone2TimeInput.value;
-    startTimerZone2(zone2Time);
-});
+
 
 
 
@@ -771,23 +819,33 @@ function startTimerZone3(duration) {
         document.getElementById("c16").style.strokeDasharray = [k, l];
 
         document.getElementById("c16").style.strokeDashoffset = 0; 
-        zone3Instructions.textContent = "Water Zone 3 in " + (time - i + 1) + " seconds";
+        if (zone3Instructions.textContent != "Do Not Overwater!") {
+            zone3Instructions.textContent = "Water Zone 3 in " + (time - i + 1) + " seconds";
+        }
         i++;
     }, 1000);
+
+    zone3Button.addEventListener("click", function () {
+        if (zone3Button.classList.contains("tooSoon")) {
+            zone3Instructions.textContent = "Do Not Overwater!";
+
+            setTimeout(() => {
+                zone3Instructions.textContent = zone3Instructions.textContent = "Water Zone 3 in " + (time - i + 1) + " seconds";
+            }
+            , 2000);
+            return;}
+        if (zone3Button.classList.contains("flash")) {
+            zone3Button.classList.remove("flash"); 
+        }
+        clearInterval(intervalIdZone3); 
+        zone3Time = zone3TimeInput.value;
+        startTimerZone3(zone3Time);
+    });
 }
 
 
 
-zone3Button.addEventListener("click", function () {
-    if (zone3Button.classList.contains("tooSoon")) {
-        return;}
-    if (zone3Button.classList.contains("flash")) {
-        zone3Button.classList.remove("flash"); 
-    }
-    clearInterval(intervalIdZone3); 
-    zone3Time = zone3TimeInput.value;
-    startTimerZone3(zone3Time);
-});
+
 
 
 

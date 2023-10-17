@@ -139,12 +139,16 @@ body {
 #gorillaInstructions, #birdInstructions, #dogInstructions {
     color: white;
     font-size: 12px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font: Lucida Console;
     margin-bottom: -3px;
 }
 
 #zone1Instructions, #zone2Instructions, #zone3Instructions {
   color: white;
   font-size: 12px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font: Lucida Console;
   margin-bottom: -3px;
 }
 
@@ -192,6 +196,8 @@ body {
   margin-left: 53px;
   color: white;
   font-size: 12px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font: Lucida Console;
   text-align: center;
 }
 
@@ -358,12 +364,14 @@ circle {
     background: #B48E92;
     cursor: pointer;
     margin-right: 0px;
-    font-size: 12;
+    font-size: 14px;
     padding-left: 0px;
     padding-top: 4px;
     padding-bottom: 5px;
     color: black;
     text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font: Lucida Console;
     border-top: 2px solid #B48E92;
     border-left: 2px solid #B48E92;
     border-right: 2px solid #B48E92;
@@ -500,6 +508,8 @@ circle {
 
 .close-button {
   font-size: 16px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font: Lucida Console;
   cursor: pointer;
   padding: 0; 
   border: none; 
@@ -582,14 +592,25 @@ circle {
   margin-right: 100px;
   border: 2px solid #B48E92;
   color: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font: Lucida Console;
+  text-align: center;
   
 }
 
 .emergency-controls-container button {
   margin-bottom: 5px;
 }
-#helpFeed, #helpSprinkler {
-  margin-top: 15px;
+#helpFeed {
+  margin-top: 10px;
+  font-size: 12px;
+  text-align: center;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+#helpSprinkler {
+  margin-top: 19px;
   font-size: 12px;
   text-align: center;
   margin-left: 3px;
@@ -597,26 +618,26 @@ circle {
 }
 
 #emergency-feed-button {
-  margin-top: 15px;
-  margin-left: 45px;
+  margin-top: 10px;
+
 }
 
 #close-gate {
-  margin-left: 32px;
+
   margin-top: 5px;
 
 }
 
 #open-gate {
-  margin-left: 33px;
+
   margin-top: 5px;
 
 }
 
 #on-sprinkler {
-  margin-left: 20px;
-  margin-top: 50px;
-  margin-bottom: 33px;
+
+  margin-top: 44px;
+  margin-bottom: 25px;
   
 
 }
