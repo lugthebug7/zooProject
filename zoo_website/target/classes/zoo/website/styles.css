@@ -3,16 +3,23 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    background-color: cadetblue;
+    background-color: #36311F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .root-container {
     width: 100%;
     height: 100%;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-right: 5px;
+    margin-left: 100px;
+    margin-bottom: 50px;
 
 }
 
@@ -21,7 +28,7 @@ body {
     width: 500px;
     display: flex;
     flex-direction: row;
-    border-top: 2px solid darkcyan;
+    border-top: 2px solid #B48E92;
 }
 
 .row2 {
@@ -29,7 +36,7 @@ body {
   width: 500px;
   display: flex;
   flex-direction: row;
-  border-top: 0.1px solid darkcyan;
+  border-top: 0.1px solid #B48E92;
 }
 
 .row3 {
@@ -37,8 +44,8 @@ body {
   width: 500px;
   display: flex;
   flex-direction: row;
-  border-top: 0.1px solid darkcyan;
-  border-bottom: 2px solid darkcyan;
+  border-top: 0.1px solid #B48E92;
+  border-bottom: 2px solid #B48E92;
 }
 
 .left-container-gorilla, .left-container-bird, .left-container-dog {
@@ -46,7 +53,7 @@ body {
     width: 100%;
     flex: 1;
     background-color: azure;
-    border-left: 2px solid darkcyan;
+    border-left: 2px solid #B48E92;
 }
 
 .left-container-gorilla {
@@ -73,17 +80,42 @@ body {
     flex: 3;
     background-color: black;
 
-    border-right: 1.25px solid darkcyan;
+    border-right: 2px solid #B48E92;
     display: flex;
     align-items: center;
     justify-content: center;
 
 }
 
-.flex-container {
+.flex-container-left {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 150px;
+    margin-left: 50px;
+    margin-right: 0px;
+}
+
+.flex-container-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 60px;
+}
+
+.flex-container-z1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
 
 .schedule-button {
@@ -104,6 +136,18 @@ body {
     filter: brightness(90%);
 }
 
+#gorillaInstructions, #birdInstructions, #dogInstructions {
+    color: white;
+    font-size: 12px;
+    margin-bottom: -3px;
+}
+
+#zone1Instructions, #zone2Instructions, #zone3Instructions {
+  color: white;
+  font-size: 12px;
+  margin-bottom: -3px;
+}
+
 
 
 
@@ -118,6 +162,7 @@ body {
     background-size: cover; 
     background-repeat: no-repeat; 
     cursor: pointer; 
+    margin-top: 15px;
     margin-left: 50px;
     border: 2px solid black;
 }
@@ -125,16 +170,29 @@ body {
     filter: brightness(90%);
 }
 .flash {
-    animation: flash 220ms infinite alternate;
+    animation: flash 420ms infinite alternate;
 }
 @keyframes flash {
     from {
         filter: brightness(100%);
     }
     to {
-        filter: brightness(65%);
-        border: 2px solid red;
+        filter: brightness(61%);
+        border: 2px solid #B48E92;
     }
+}
+
+.tooSoon{
+  font-size: 12px;
+}
+
+
+#gateFeedback {
+  margin-top: 7px;
+  margin-left: 53px;
+  color: white;
+  font-size: 12px;
+  text-align: center;
 }
 
 
@@ -162,14 +220,14 @@ circle {
   
   #c2 {
     transition: all 1ms linear;
-    stroke: red;
+    stroke: #A05F64;
     stroke-width: 3px;
     stroke-linecap: butt;
     fill: transparent;
   }
 
   #c2.selected {
-    stroke: green;
+    stroke: #76885A;
   }
 
   #c3{
@@ -182,14 +240,14 @@ circle {
   
   #c4 {
     transition: all 1ms linear;
-    stroke: red;
+    stroke: #A05F64;
     stroke-width: 3px;
     stroke-linecap: butt;
     fill: transparent;
   }
 
   #c4.selected {
-    stroke: green;
+    stroke: #76885A;
   }
 
   #c5{
@@ -202,14 +260,14 @@ circle {
   
   #c6 {
     transition: all 1ms linear;
-    stroke: red;
+    stroke: #A05F64;
     stroke-width: 3px;
     stroke-linecap: butt;
     fill: transparent;
   }
 
   #c6.selected {
-    stroke: green;
+    stroke: #76885A;
   }
 
 
@@ -224,7 +282,7 @@ circle {
     transform: translate(-50%, -50%);
     padding: 20px;
     background-color: #fff;
-    border: 1px solid darkcyan;
+    border: 1px solid #B48E92;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
 }
@@ -246,10 +304,9 @@ circle {
     margin-top: -17px;
 }
 
-#instructions {
-  color: white;
-  font-size: 7px;
-}
+
+
+
 
 
 .overlay {
@@ -298,18 +355,18 @@ circle {
   .tab1 {
     width: 70px;
     height: 35px;
-    background: darkcyan;
+    background: #B48E92;
     cursor: pointer;
     margin-right: 0px;
     font-size: 12;
     padding-left: 0px;
     padding-top: 4px;
     padding-bottom: 5px;
-    color: white;
+    color: black;
     text-align: center;
-    border-top: 2px solid darkcyan;
-    border-left: 2px solid darkcyan;
-    border-right: 2px solid darkcyan;
+    border-top: 2px solid #B48E92;
+    border-left: 2px solid #B48E92;
+    border-right: 2px solid #B48E92;
     position: relative;
     left: 426px;
     top: 0px;
@@ -326,7 +383,7 @@ circle {
     height: 100%;
     width: 100%;
     flex: 1;
-    border-left: 1px solid darkcyan;
+    border-left: 2px solid #B48E92;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -366,14 +423,14 @@ circle {
 
 #c12 {
   transition: all 1ms linear;
-  stroke: red;
+  stroke: #A05F64;
   stroke-width: 3px;
   stroke-linecap: butt;
   fill: transparent;
 }
 
 #c12.selected {
-  stroke: green;
+  stroke: #6c8dfa;
 }
 
 #c13{
@@ -386,14 +443,14 @@ circle {
 
 #c14 {
   transition: all 1ms linear;
-  stroke: red;
+  stroke: #A05F64;
   stroke-width: 3px;
   stroke-linecap: butt;
   fill: transparent;
 }
 
 #c14.selected {
-  stroke: green;
+  stroke: #6c8dfa;
 }
 
 #c15{
@@ -406,14 +463,14 @@ circle {
 
 #c16 {
   transition: all 1ms linear;
-  stroke: red;
+  stroke: #A05F64;
   stroke-width: 3px;
   stroke-linecap: butt;
   fill: transparent;
 }
 
 #c16.selected {
-  stroke: green;
+  stroke: #6c8dfa;
 }
 
 
@@ -427,7 +484,8 @@ circle {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
-  background-color: #fff;
+  background-color: white;
+  color: black;
   border: 1px solid #ccc;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
@@ -511,3 +569,66 @@ circle {
 .sprinkler-button:hover {
   filter: brightness(90%);
 }
+
+
+.emergency-controls-container {
+  width: 150px;
+  height: 200px;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 100px;
+  border: 2px solid #B48E92;
+  color: white;
+  
+}
+
+.emergency-controls-container button {
+  margin-bottom: 5px;
+}
+#helpFeed, #helpSprinkler {
+  margin-top: 15px;
+  font-size: 12px;
+  text-align: center;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+#emergency-feed-button {
+  margin-top: 15px;
+  margin-left: 45px;
+}
+
+#close-gate {
+  margin-left: 32px;
+  margin-top: 5px;
+
+}
+
+#open-gate {
+  margin-left: 33px;
+  margin-top: 5px;
+
+}
+
+#on-sprinkler {
+  margin-left: 20px;
+  margin-top: 50px;
+  margin-bottom: 33px;
+  
+
+}
+
+
+.super-root-container {
+  width: 1000px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+
+

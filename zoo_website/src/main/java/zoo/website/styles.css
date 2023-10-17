@@ -87,10 +87,35 @@ body {
 
 }
 
-.flex-container {
+.flex-container-left {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 150px;
+    margin-left: 50px;
+    margin-right: 0px;
+}
+
+.flex-container-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 60px;
+}
+
+.flex-container-z1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
 
 .schedule-button {
@@ -111,6 +136,18 @@ body {
     filter: brightness(90%);
 }
 
+#gorillaInstructions, #birdInstructions, #dogInstructions {
+    color: white;
+    font-size: 12px;
+    margin-bottom: -3px;
+}
+
+#zone1Instructions, #zone2Instructions, #zone3Instructions {
+  color: white;
+  font-size: 12px;
+  margin-bottom: -3px;
+}
+
 
 
 
@@ -125,6 +162,7 @@ body {
     background-size: cover; 
     background-repeat: no-repeat; 
     cursor: pointer; 
+    margin-top: 15px;
     margin-left: 50px;
     border: 2px solid black;
 }
@@ -132,16 +170,29 @@ body {
     filter: brightness(90%);
 }
 .flash {
-    animation: flash 220ms infinite alternate;
+    animation: flash 420ms infinite alternate;
 }
 @keyframes flash {
     from {
         filter: brightness(100%);
     }
     to {
-        filter: brightness(65%);
-        border: 2px solid red;
+        filter: brightness(61%);
+        border: 2px solid #B48E92;
     }
+}
+
+.tooSoon{
+  font-size: 12px;
+}
+
+
+#gateFeedback {
+  margin-top: 7px;
+  margin-left: 53px;
+  color: white;
+  font-size: 12px;
+  text-align: center;
 }
 
 
@@ -169,14 +220,14 @@ circle {
   
   #c2 {
     transition: all 1ms linear;
-    stroke: red;
+    stroke: #A05F64;
     stroke-width: 3px;
     stroke-linecap: butt;
     fill: transparent;
   }
 
   #c2.selected {
-    stroke: green;
+    stroke: #76885A;
   }
 
   #c3{
@@ -189,14 +240,14 @@ circle {
   
   #c4 {
     transition: all 1ms linear;
-    stroke: red;
+    stroke: #A05F64;
     stroke-width: 3px;
     stroke-linecap: butt;
     fill: transparent;
   }
 
   #c4.selected {
-    stroke: green;
+    stroke: #76885A;
   }
 
   #c5{
@@ -209,14 +260,14 @@ circle {
   
   #c6 {
     transition: all 1ms linear;
-    stroke: red;
+    stroke: #A05F64;
     stroke-width: 3px;
     stroke-linecap: butt;
     fill: transparent;
   }
 
   #c6.selected {
-    stroke: green;
+    stroke: #76885A;
   }
 
 
@@ -253,10 +304,9 @@ circle {
     margin-top: -17px;
 }
 
-#instructions {
-  color: white;
-  font-size: 9px;
-}
+
+
+
 
 
 .overlay {
@@ -373,14 +423,14 @@ circle {
 
 #c12 {
   transition: all 1ms linear;
-  stroke: red;
+  stroke: #A05F64;
   stroke-width: 3px;
   stroke-linecap: butt;
   fill: transparent;
 }
 
 #c12.selected {
-  stroke: green;
+  stroke: #6c8dfa;
 }
 
 #c13{
@@ -393,14 +443,14 @@ circle {
 
 #c14 {
   transition: all 1ms linear;
-  stroke: red;
+  stroke: #A05F64;
   stroke-width: 3px;
   stroke-linecap: butt;
   fill: transparent;
 }
 
 #c14.selected {
-  stroke: green;
+  stroke: #6c8dfa;
 }
 
 #c15{
@@ -413,14 +463,14 @@ circle {
 
 #c16 {
   transition: all 1ms linear;
-  stroke: red;
+  stroke: #A05F64;
   stroke-width: 3px;
   stroke-linecap: butt;
   fill: transparent;
 }
 
 #c16.selected {
-  stroke: green;
+  stroke: #6c8dfa;
 }
 
 
@@ -523,7 +573,7 @@ circle {
 
 .emergency-controls-container {
   width: 150px;
-  height: 150px;
+  height: 200px;
   background-color: black;
   display: flex;
   flex-direction: column;
@@ -537,6 +587,13 @@ circle {
 
 .emergency-controls-container button {
   margin-bottom: 5px;
+}
+#helpFeed, #helpSprinkler {
+  margin-top: 15px;
+  font-size: 12px;
+  text-align: center;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 #emergency-feed-button {
@@ -557,9 +614,9 @@ circle {
 }
 
 #on-sprinkler {
-  margin-left: 1px;
-  margin-top: 40px;
-  margin-bottom: 43px;
+  margin-left: 20px;
+  margin-top: 50px;
+  margin-bottom: 33px;
   
 
 }

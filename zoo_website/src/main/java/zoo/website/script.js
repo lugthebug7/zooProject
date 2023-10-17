@@ -1,6 +1,7 @@
 
 const gateButtons = document.querySelectorAll(".gate-button");
 
+
 const emergencyFeedButton = document.getElementById("emergency-feed-button");
 const closeGate = document.getElementById("close-gate");
 const openGate = document.getElementById("open-gate");
@@ -8,33 +9,41 @@ const onSprinkler = document.getElementById("on-sprinkler");
 
 
 
-gateButtons.forEach((button) => {
-    button.addEventListener("click", () => {
+gateButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
         button.classList.toggle("flash");
+        const gateFeedback = this.parentElement.querySelector("#gateFeedback");
+        if (gateFeedback.textContent === 'Gate Closed') {
+            gateFeedback.textContent = 'Gate Open'
+        } else {
+            gateFeedback.textContent = 'Gate Closed'
+        }
     });
 });
 
 
-
+var gorillaInstructions = document.getElementById("gorillaInstructions");
 var gorillaFeedTimeInput = document.getElementById("gorillaTimer");
 var gorillaButton = document.getElementById("gorillaButton")
 var gorillaFeedTime = gorillaFeedTimeInput.value;
 var intervalIdGorilla;
 startTimerGorilla(gorillaFeedTime);
 
+var birdInstructions = document.getElementById("birdInstructions");
 var birdFeedTimeInput = document.getElementById("birdTimer");
 var birdButton = document.getElementById("birdButton")
 var birdFeedTime = birdFeedTimeInput.value;
 var intervalIdBird;
 startTimerBird(birdFeedTime);
 
+var dogInstructions = document.getElementById("dogInstructions");
 var dogFeedTimeInput = document.getElementById("dogTimer");
 var dogButton = document.getElementById("dogButton")
 var dogFeedTime = dogFeedTimeInput.value;
 var intervalIdDog;
 startTimerDog(dogFeedTime);
 
-// Your existing code...
+
 
 const feedButtons = [
     document.getElementById("activateGorillaFeed"),
@@ -92,6 +101,9 @@ function feedActivation(feedButton, circle, animalButton, intervalId, animalFeed
         feedButton.textContent = 'Deactivate';
         feedButton.classList.toggle("activated");
         animalFeedTimes[animalId] = animalFeedTimeInput.value;
+        if (animalButton.classList.contains("flash")){
+            animalButton.classList.remove("flash")
+        }
         circle.classList.toggle("selected");
         startTimer(animalFeedTimes[animalId], animalId);
     } else {
@@ -114,7 +126,7 @@ for (let i = 0; i < feedButtons.length; i++) {
 function stopAndResetTimerGorilla() {
     clearInterval(intervalIdGorilla);
     document.getElementById("c2").style.strokeDasharray = [100, 0];
-    document.getElementById("c2").style.strokeDashoffset = 25;
+    document.getElementById("c2").style.strokeDashoffset = 0;
 }
 
 
@@ -155,9 +167,15 @@ function startTimerGorilla(duration) {
 
     document.getElementById("c2").style.strokeDasharray = [100, 0];
 
-    document.getElementById("c2").style.strokeDashoffset = 25;
-
+    document.getElementById("c2").style.strokeDashoffset = 0;
+    gorillaInstructions.textContent = "Feed Gorilla in " + (time) + " seconds";
     intervalIdGorilla = setInterval(function () {
+        if (i < time / 2){
+            gorillaButton.classList.toggle("tooSoon", true);
+        }
+        if (i > time / 2){
+            gorillaButton.classList.toggle("tooSoon", false);
+        }
         if (i > time) {
             clearInterval(intervalIdGorilla);
             if (feedButtons[0].classList.contains("activated")) {
@@ -165,6 +183,7 @@ function startTimerGorilla(duration) {
                 startTimerGorilla(gorillaFeedTime);
             } else {
                 gorillaButton.classList.toggle("flash");
+                gorillaInstructions.textContent = "FEED NOW!";
                 return;
             }
         }
@@ -173,14 +192,17 @@ function startTimerGorilla(duration) {
 
         document.getElementById("c2").style.strokeDasharray = [k, l];
 
-        document.getElementById("c2").style.strokeDashoffset = 25;
-        console.log(k, l);
+        document.getElementById("c2").style.strokeDashoffset = 0;
+        console.log(time, i, k, l, document.getElementById("c2").style.strokeDashoffset);
+        gorillaInstructions.textContent = "Feed Gorilla in " + (time  - i + 1) + " seconds";
         i++;
     }, 1000);
 }
 
 
 gorillaButton.addEventListener("click", function () {
+    if (gorillaButton.classList.contains("tooSoon")) {
+        return;}
     if (gorillaButton.classList.contains("flash")) {
         gorillaButton.classList.remove("flash"); 
     }
@@ -213,9 +235,15 @@ function startTimerBird(duration) {
 
     document.getElementById("c4").style.strokeDasharray = [100, 0];
 
-    document.getElementById("c4").style.strokeDashoffset = 25;
+    document.getElementById("c4").style.strokeDashoffset = 0;
 
     intervalIdBird = setInterval(function () {
+        if (i < time / 2){
+            birdButton.classList.toggle("tooSoon", true);
+        }
+        if (i > time / 2){
+            birdButton.classList.toggle("tooSoon", false);
+        }
         if (i > time) {
             clearInterval(intervalIdBird);
             if (feedButtons[1].classList.contains("activated")) {
@@ -223,6 +251,7 @@ function startTimerBird(duration) {
                 startTimerBird(birdFeedTime);
             } else {
                 birdButton.classList.toggle("flash");
+                birdInstructions.textContent = "FEED NOW!";
                 return;
             }
         }
@@ -231,8 +260,8 @@ function startTimerBird(duration) {
 
         document.getElementById("c4").style.strokeDasharray = [k, l];
 
-        document.getElementById("c4").style.strokeDashoffset = 25;
-        console.log(k, l);
+        document.getElementById("c4").style.strokeDashoffset = 0;
+        birdInstructions.textContent = "Feed Bird in " + (time - i) + " seconds";
         i++;
     }, 1000);
 }
@@ -240,6 +269,8 @@ function startTimerBird(duration) {
 
 
 birdButton.addEventListener("click", function () {
+    if (birdButton.classList.contains("tooSoon")) {
+        return;}
     if (birdButton.classList.contains("flash")) {
         birdButton.classList.remove("flash"); 
     }
@@ -265,9 +296,16 @@ function startTimerDog(duration) {
 
     document.getElementById("c6").style.strokeDasharray = [100, 0];
 
-    document.getElementById("c6").style.strokeDashoffset = 25;
+    document.getElementById("c6").style.strokeDashoffset = 0;
 
     intervalIdDog = setInterval(function () {
+        if (i < time / 2){
+            dogButton.classList.toggle("tooSoon", true);
+        }
+
+        if (i > time / 2){
+            dogButton.classList.toggle("tooSoon", false);
+        }
         if (i > time) {
             clearInterval(intervalIdDog);
             if (feedButtons[2].classList.contains("activated")) {
@@ -275,6 +313,7 @@ function startTimerDog(duration) {
                 startTimerDog(dogFeedTime);
             } else {
                 dogButton.classList.toggle("flash");
+                dogInstructions.textContent = "FEED NOW!";
                 return;
             }
         }
@@ -283,8 +322,8 @@ function startTimerDog(duration) {
 
         document.getElementById("c6").style.strokeDasharray = [k, l];
 
-        document.getElementById("c6").style.strokeDashoffset = 25;
-        console.log(k, l);
+        document.getElementById("c6").style.strokeDashoffset = 0;
+        dogInstructions.textContent = "Feed Dog in " + (time - i) + " seconds";
         i++;
     }, 1000);
 }
@@ -324,6 +363,8 @@ function openDogModal() {
 
 
   dogButton.addEventListener("click", function () {
+    if (dogButton.classList.contains("tooSoon")) {
+        return;}
     if (dogButton.classList.contains("flash")) {
         dogButton.classList.remove("flash"); 
     }
@@ -347,19 +388,21 @@ function toggleLayout() {
 }
 
 
-
+var zone1Instructions = document.getElementById("zone1Instructions");
 var zone1TimeInput = document.getElementById("zone1Timer");
 var zone1Button = document.getElementById("zone1Button")
 var zone1Time = zone1TimeInput.value;
 var intervalIdZone1;
 startTimerZone1(zone1Time);
 
+var zone2Instructions = document.getElementById("zone2Instructions");
 var zone2TimeInput = document.getElementById("zone2Timer");
 var zone2Button = document.getElementById("zone2Button")
 var zone2Time = zone2TimeInput.value;
 var intervalIdZone2;
 startTimerZone2(zone2Time);
 
+var zone3Instructions = document.getElementById("zone3Instructions");
 var zone3TimeInput = document.getElementById("zone3Timer");
 var zone3Button = document.getElementById("zone3Button")
 var zone3Time = zone3TimeInput.value;
@@ -482,13 +525,17 @@ emergencyFeedButton.addEventListener("click", function () {
 
     stopAndResetTimerDog();
     startTimerDog(dogFeedTime);
-    });
+});
 
 
 closeGate.addEventListener("click", function () {
     gateButtons.forEach((button) => {
-        if (button.classList.contains("flash")) {
-            button.classList.remove("flash");
+        button.classList.toggle("flash", false);
+
+        const gateFeedback = button.parentElement.querySelector("#gateFeedback");
+        
+        if (gateFeedback.textContent !== 'Gate Closed') {
+            gateFeedback.textContent = 'Gate Closed';
         }
     });
 });
@@ -497,10 +544,13 @@ closeGate.addEventListener("click", function () {
 
 openGate.addEventListener("click", function () {
     gateButtons.forEach((button) => {
-        if (button.classList.contains("flash")) {
-            button.classList.remove("flash");
+        button.classList.toggle("flash", true);
+
+        const gateFeedback = button.parentElement.querySelector("#gateFeedback");
+        
+        if (gateFeedback.textContent !== 'Gate Open') {
+            gateFeedback.textContent = 'Gate Open';
         }
-        button.classList.toggle("flash");
     });
 });
 
@@ -566,9 +616,16 @@ function startTimerZone1(duration) {
 
     document.getElementById("c12").style.strokeDasharray = [100, 0];
 
-    document.getElementById("c12").style.strokeDashoffset = 25; 
-
+    document.getElementById("c12").style.strokeDashoffset = 0; 
+    zone1Instructions.textContent = "Water Zone 1 in " + (time) + " seconds";
     intervalIdZone1 = setInterval(function () {
+        if (i < time / 2){  
+            zone1Button.classList.toggle("tooSoon", true);
+        }
+        if (i > time / 2){
+            zone1Button.classList.toggle("tooSoon", false);
+        }
+
         if (i > time) {
             clearInterval(intervalIdZone1);
             if (autoSprinklerButtons[0].classList.contains("activated")) {
@@ -576,6 +633,7 @@ function startTimerZone1(duration) {
                 startTimerZone1(zone1Time);
             } else {
                 zone1Button.classList.toggle("flash");
+                zone1Instructions.textContent = "WATER NOW!";
                 return;
             }
         }
@@ -584,14 +642,16 @@ function startTimerZone1(duration) {
 
         document.getElementById("c12").style.strokeDasharray = [k, l];
 
-        document.getElementById("c12").style.strokeDashoffset = 25; 
-        console.log(k, l);
+        document.getElementById("c12").style.strokeDashoffset = 0; 
+        zone1Instructions.textContent = "Water Zone 1 in " + (time - i + 1) + " seconds";
         i++;
     }, 1000);
 }
 
 
 zone1Button.addEventListener("click", function () {
+    if (zone1Button.classList.contains("tooSoon")) {
+        return;}
     if (zone1Button.classList.contains("flash")) {
         zone1Button.classList.remove("flash"); 
     }
@@ -624,9 +684,15 @@ function startTimerZone2(duration) {
 
     document.getElementById("c14").style.strokeDasharray = [100, 0];
 
-    document.getElementById("c14").style.strokeDashoffset = 25; 
-
+    document.getElementById("c14").style.strokeDashoffset = 0; 
+    zone2Instructions.textContent = "Water Zone 2 in " + (time) + " seconds";
     intervalIdZone2 = setInterval(function () {
+        if(i < time / 2){
+            zone2Button.classList.toggle("tooSoon", true);      
+        }
+        if(i > time / 2){
+            zone2Button.classList.toggle("tooSoon", false);      
+        }
         if (i > time) {
             clearInterval(intervalIdZone2);
             if (autoSprinklerButtons[1].classList.contains("activated")) {
@@ -634,6 +700,7 @@ function startTimerZone2(duration) {
                 startTimerZone2(zone2Time);
             } else {
                 zone2Button.classList.toggle("flash");
+                zone2Instructions.textContent = "WATER NOW!";
                 return;
             }
         }
@@ -642,8 +709,8 @@ function startTimerZone2(duration) {
 
         document.getElementById("c14").style.strokeDasharray = [k, l];
 
-        document.getElementById("c14").style.strokeDashoffset = 25; 
-        console.log(k, l);
+        document.getElementById("c14").style.strokeDashoffset = 0; 
+        zone2Instructions.textContent = "Water Zone 2 in " + (time - i + 1) + " seconds";
         i++;
     }, 1000);
 }
@@ -651,6 +718,8 @@ function startTimerZone2(duration) {
 
 
 zone2Button.addEventListener("click", function () {
+    if (zone2Button.classList.contains("tooSoon")) {
+        return;}
     if (zone2Button.classList.contains("flash")) {
         zone2Button.classList.remove("flash"); 
     }
@@ -676,9 +745,15 @@ function startTimerZone3(duration) {
 
     document.getElementById("c16").style.strokeDasharray = [100, 0];
 
-    document.getElementById("c16").style.strokeDashoffset = 25; 
-
+    document.getElementById("c16").style.strokeDashoffset = 0; 
+    zone3Instructions.textContent = "Water Zone 3 in " + (time) + " seconds";
     intervalIdZone3 = setInterval(function () {
+        if (i < time / 2){
+            zone3Button.classList.toggle("tooSoon", true);
+        }
+        if (i > time / 2){
+            zone3Button.classList.toggle("tooSoon", false);
+        }
         if (i > time) {
             clearInterval(intervalIdZone3);
             if (autoSprinklerButtons[2].classList.contains("activated")) {
@@ -686,6 +761,7 @@ function startTimerZone3(duration) {
                 startTimerZone3(zone3Time);
             } else {
                 zone3Button.classList.toggle("flash");
+                zone3Instructions.textContent = "WATER NOW!";
                 return;
             }
         }
@@ -694,8 +770,8 @@ function startTimerZone3(duration) {
 
         document.getElementById("c16").style.strokeDasharray = [k, l];
 
-        document.getElementById("c16").style.strokeDashoffset = 25; 
-        console.log(k, l);
+        document.getElementById("c16").style.strokeDashoffset = 0; 
+        zone3Instructions.textContent = "Water Zone 3 in " + (time - i + 1) + " seconds";
         i++;
     }, 1000);
 }
@@ -703,6 +779,8 @@ function startTimerZone3(duration) {
 
 
 zone3Button.addEventListener("click", function () {
+    if (zone3Button.classList.contains("tooSoon")) {
+        return;}
     if (zone3Button.classList.contains("flash")) {
         zone3Button.classList.remove("flash"); 
     }

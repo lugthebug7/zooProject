@@ -7,193 +7,221 @@
     <title>Zoo Controls</title>
 </head>
 <body>
-    <div class="root-container">
+    <div class="super-root-container">
+        <div class="root-container">
+            <div class="layout1">
+                <div class="tab1" onclick="toggleLayout()"> Switch to Sprinkler</div>
+                <div class="row1">
+                    <div class="left-container-gorilla"></div>
+                    <div class="right-container">
+                        <div class="flex-container-left">
+                            <svg width="95px" height="95px" viewBox="0 0 42 42" class="donut">
+                                <circle id="c1" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="100 0" stroke-dashoffset="25"></circle>
+                                <circle id="c2" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="0 100" stroke-dashoffset="25"></circle>
+                                <g class="chart-image">
+                                    <foreignObject x="6" y="6" width="34" height="34">
+                                        <div class="button-container">
+                                            <button class="food-button" id="gorillaButton" ondblclick="openGorillaModal()"></button>
+                                        </div>
+                                    </foreignObject>
+                                </g>
+                            </svg>
+                            <div id="gorillaInstructions">Feed Gorilla in 30 Seconds</div>
+                            <div class="overlay" id="overlay"></div>
+                            <div class="modalGorilla" id="gorillaModal">
+                                <div class="modal-header">
+                                    <button class="close-button" onclick="closeGorillaModal()">x</button>
+                                </div>
+                                <label for="timer-input">Auto-Feed Timer (Seconds):</label>
+                                <input type="number" id="gorillaTimer" min="0" max="10000" step="5" value="30" oninput="setTime(this.value)">
+                                <br>
+                                <button id="activateGorillaFeed">Activate</button>
+                            </div>
+                        </div>
+                        <div class="flex-container-right">
+                            <button class="gate-button"></button>
+                            <div id="gateFeedback">Gate Closed</div>
+                        </div>
 
-        <div class="layout1">
-            <div class="tab1" onclick="toggleLayout()"> Switch to Sprinkler</div>
-            <div class="row1">
-                <div class="left-container-gorilla"></div>
-                <div class="right-container">
-                    <div class="flex-container">
+                        
+                    </div>
+                </div>
+                
+                <div class="row2">
+                    <div class="left-container-bird"></div>
+                    <div class="right-container">
+                        <div class="flex-container-left">
                         <svg width="95px" height="95px" viewBox="0 0 42 42" class="donut">
-                            <circle id="c1" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="100 0" stroke-dashoffset="25"></circle>
-                            <circle id="c2" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="0 100" stroke-dashoffset="75"></circle>
+                            <circle id="c3" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="100 0" stroke-dashoffset="100"></circle>
+                            <circle id="c4" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="0 100" stroke-dashoffset="0"></circle>
                             <g class="chart-image">
                                 <foreignObject x="6" y="6" width="34" height="34">
                                     <div class="button-container">
-                                        <button class="food-button" id="gorillaButton" ondblclick="openGorillaModal()"></button>
+                                        <button class="food-button" id="birdButton" ondblclick="openBirdModal()"></button>
                                     </div>
                                 </foreignObject>
                             </g>
                         </svg>
-                        <div id="instructions">*Double Click to Schedule</div>
+                        <div id="birdInstructions">Feed Bird in 300 Seconds</div>
                         <div class="overlay" id="overlay"></div>
-                        <div class="modalGorilla" id="gorillaModal">
+                        <div class="modalBird" id="birdModal">
                             <div class="modal-header">
-                                <button class="close-button" onclick="closeGorillaModal()">x</button>
+                                <button class="close-button" onclick="closeBirdModal()">x</button>
                             </div>
                             <label for="timer-input">Auto-Feed Timer (Seconds):</label>
-                            <input type="number" id="gorillaTimer" min="0" max="10000" step="5" value="30" oninput="setTime(this.value)">
+                            <input type="number" id="birdTimer" min="0" max="10000" step="5" value="300" oninput="setTime(this.value)">
                             <br>
-                            <button id="activateGorillaFeed">Activate</button>
+                            <button id="activateBirdFeed">Activate</button>
+                        </div>
+                        </div>
+                        <div class="flex-container-right">
+                            <button class="gate-button"></button>
+                            <div id="gateFeedback">Gate Closed</div>
                         </div>
                     </div>
-                    <button class="gate-button"></button>
+                </div>
+
+                <div class="row3">
+                    <div class="left-container-dog"></div>
+                    <div class="right-container">
+                        <div class="flex-container-left">
+                        <svg width="95px" height="95px" viewBox="0 0 42 42" class="donut">
+                            <circle id="c5" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="100 0" stroke-dashoffset="100"></circle>
+                            <circle id="c6" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="0 100" stroke-dashoffset="0"></circle>
+                            <g class="chart-image">
+                                <foreignObject x="6" y="6" width="34" height="34">
+                                    <div class="button-container">
+                                        <button class="food-button" id="dogButton" ondblclick="openDogModal()"></button>
+                                    </div>
+                                </foreignObject>
+                            </g>
+                        </svg>
+                        <div id="dogInstructions">Feed Dog in 300 Seconds</div>
+                        <div class="overlay" id="overlay"></div>
+                        <div class="modalDog" id="dogModal">
+                            <div class="modal-header">
+                                <button class="close-button" onclick="closeDogModal()">x</button>
+                            </div>
+                            <label for="timer-input">Auto-Feed Timer (Seconds):</label>
+                            <input type="number" id="dogTimer" min="0" max="10000" step="5" value="300" oninput="setTime(this.value)">
+                            <br>
+                            <button id="activateDogFeed">Activate</button>
+                        </div>
+                        </div>
+                        <div class="flex-container-right">
+                            <button class="gate-button"></button>
+                            <div id="gateFeedback">Gate Closed</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="row2">
-                <div class="left-container-bird"></div>
-                <div class="right-container">
-                    <svg width="95px" height="95px" viewBox="0 0 42 42" class="donut">
-                        <circle id="c3" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="100 0" stroke-dashoffset="100"></circle>
-                        <circle id="c4" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="0 100" stroke-dashoffset="0"></circle>
-                        <g class="chart-image">
-                            <foreignObject x="6" y="6" width="34" height="34">
-                                <div class="button-container">
-                                    <button class="food-button" id="birdButton" ondblclick="openBirdModal()"></button>
+
+
+
+            <div class="layout2" style="display: none;">
+                <div class="tab1" onclick="toggleLayout()"> Switch to Animals</div>
+                <div class="row1">
+                    <div class="left-container-red">ZONE 1</div>
+                    <div class="right-container">
+                        <div class="flex-container-z1">
+                            <svg width="95px" height="95px" viewBox="0 0 42 42" class="donut">
+                                <circle id="c11" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="100 0" stroke-dashoffset="25"></circle>
+                                <circle id="c12" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="0 100" stroke-dashoffset="75"></circle>
+                                <g class="chart-image">
+                                    <foreignObject x="6" y="6" width="34" height="34">
+                                        <div class="button-container">
+                                            <button class="sprinkler-button" id="zone1Button" ondblclick="openZone1Modal()"></button>
+                                        </div>
+                                    </foreignObject>
+                                </g>
+                            </svg>
+                            <div id="zone1Instructions">Water Zone 1 in 300 Seconds</div>
+                            <div class="overlay" id="zone1Overlay"></div>
+                            <div class="modalZone1" id="zone1Modal">
+                                <div class="modal-header">
+                                    <button class="close-button" onclick="closeZone1Modal()">x</button>
                                 </div>
-                            </foreignObject>
-                        </g>
-                    </svg>
-                    <div class="overlay" id="overlay"></div>
-                    <div class="modalBird" id="birdModal">
-                        <div class="modal-header">
-                            <button class="close-button" onclick="closeBirdModal()">x</button>
+                                <label for="timer-input">Auto-Sprinkler Timer (Seconds):</label>
+                                <input type="number" id="zone1Timer" min="0" max="10000" step="5" value="300" oninput="setTime(this.value)">
+                                <br>
+                                <button id="activateZone1Sprinkler">Activate</button>
+                            </div>
                         </div>
-                        <label for="timer-input">Auto-Feed Timer (Seconds):</label>
-                        <input type="number" id="birdTimer" min="0" max="10000" step="5" value="30" oninput="setTime(this.value)">
-                        <br>
-                        <button id="activateBirdFeed">Activate</button>
                     </div>
-                    <button class="gate-button"></button>
                 </div>
-            </div>
-            <div class="row3">
-                <div class="left-container-dog"></div>
-                <div class="right-container">
-                    <svg width="95px" height="95px" viewBox="0 0 42 42" class="donut">
-                        <circle id="c5" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="100 0" stroke-dashoffset="100"></circle>
-                        <circle id="c6" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="0 100" stroke-dashoffset="0"></circle>
-                        <g class="chart-image">
-                            <foreignObject x="6" y="6" width="34" height="34">
-                                <div class="button-container">
-                                    <button class="food-button" id="dogButton" ondblclick="openDogModal()"></button>
+                
+                <div class="row2">
+                    <div class="left-container-green">ZONE 2</div>
+                    <div class="right-container">
+                        <div class="flex-container">
+                            <svg width="95px" height="95px" viewBox="0 0 42 42" class="donut">
+                                <circle id="c13" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="100 0" stroke-dashoffset="25"></circle>
+                                <circle id="c14" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="0 100" stroke-dashoffset="75"></circle>
+                                <g class="chart-image">
+                                    <foreignObject x="6" y="6" width="34" height="34">
+                                        <div class="button-container">
+                                            <button class="sprinkler-button" id="zone2Button" ondblclick="openZone2Modal()"></button>
+                                        </div>
+                                    </foreignObject>
+                                </g>
+                            </svg>
+                            <div id="zone2Instructions">Water Zone 2 in 300 Seconds</div>
+                            <div class="overlay" id="zone2Overlay"></div>
+                            <div class="modalZone2" id="zone2Modal">
+                                <div class="modal-header">
+                                    <button class="close-button" onclick="closeZone2Modal()">x</button>
                                 </div>
-                            </foreignObject>
-                        </g>
-                    </svg>
-                    <div class="overlay" id="overlay"></div>
-                    <div class="modalDog" id="dogModal">
-                        <div class="modal-header">
-                            <button class="close-button" onclick="closeDogModal()">x</button>
-                        </div>
-                        <label for="timer-input">Auto-Feed Timer (Seconds):</label>
-                        <input type="number" id="dogTimer" min="0" max="10000" step="5" value="30" oninput="setTime(this.value)">
-                        <br>
-                        <button id="activateDogFeed">Activate</button>
-                    </div>
-                    <button class="gate-button"></button>
-                </div>
-            </div>
-        </div>
-
-
-
-        <div class="layout2" style="display: none;">
-            <!-- Alternate layout with different images and buttons -->
-            <!-- ... -->
-            <div class="tab1" onclick="toggleLayout()"> Switch to Animals</div>
-            <div class="row1">
-                <div class="left-container-red">ZONE 1</div>
-                <div class="right-container">
-                    <div class="flex-container">
-                        <svg width="95px" height="95px" viewBox="0 0 42 42" class="donut">
-                            <circle id="c11" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="100 0" stroke-dashoffset="25"></circle>
-                            <circle id="c12" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="0 100" stroke-dashoffset="75"></circle>
-                            <g class="chart-image">
-                                <foreignObject x="6" y="6" width="34" height="34">
-                                    <div class="button-container">
-                                        <button class="sprinkler-button" id="zone1Button" ondblclick="openZone1Modal()"></button>
-                                    </div>
-                                </foreignObject>
-                            </g>
-                        </svg>
-                        <div id="instructions">*Double Click to Schedule</div>
-                        <div class="overlay" id="zone1Overlay"></div>
-                        <div class="modalZone1" id="zone1Modal">
-                            <div class="modal-header">
-                                <button class="close-button" onclick="closeZone1Modal()">x</button>
+                                <label for="timer-input">Auto-Sprinkler Timer (Seconds):</label>
+                                <input type="number" id="zone2Timer" min="0" max="10000" step="5" value="300" oninput="setTime(this.value)">
+                                <br>
+                                <button id="activateZone2Sprinkler">Activate</button>
                             </div>
-                            <label for="timer-input">Auto-Sprinkler Timer (Seconds):</label>
-                            <input type="number" id="zone1Timer" min="0" max="10000" step="5" value="30" oninput="setTime(this.value)">
-                            <br>
-                            <button id="activateZone1Sprinkler">Activate</button>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="row2">
-                <div class="left-container-green">ZONE 2</div>
-                <div class="right-container">
-                    <div class="flex-container">
-                        <svg width="95px" height="95px" viewBox="0 0 42 42" class="donut">
-                            <circle id="c13" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="100 0" stroke-dashoffset="25"></circle>
-                            <circle id="c14" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="0 100" stroke-dashoffset="75"></circle>
-                            <g class="chart-image">
-                                <foreignObject x="6" y="6" width="34" height="34">
-                                    <div class="button-container">
-                                        <button class="sprinkler-button" id="zone2Button" ondblclick="openZone2Modal()"></button>
-                                    </div>
-                                </foreignObject>
-                            </g>
-                        </svg>
-                        <div class="overlay" id="zone2Overlay"></div>
-                        <div class="modalZone2" id="zone2Modal">
-                            <div class="modal-header">
-                                <button class="close-button" onclick="closeZone2Modal()">x</button>
+                <div class="row3">
+                    <div class="left-container-blue">ZONE 3</div>
+                    <div class="right-container">
+                        <div class="flex-container">
+                            <svg width="95px" height="95px" viewBox="0 0 42 42" class="donut">
+                                <circle id="c15" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="100 0" stroke-dashoffset="25"></circle>
+                                <circle id="c16" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="0 100" stroke-dashoffset="75"></circle>
+                                <g class="chart-image">
+                                    <foreignObject x="6" y="6" width="34" height="34">
+                                        <div class="button-container">
+                                            <button class="sprinkler-button" id="zone3Button" ondblclick="openZone3Modal()"></button>
+                                        </div>
+                                    </foreignObject>
+                                </g>
+                            </svg>
+                            <div id="zone3Instructions">Water Zone 3 in 300 Seconds</div>
+                            <div class="overlay" id="zone3Overlay"></div>
+                            <div class="modalZone3" id="zone3Modal">
+                                <div class="modal-header">
+                                    <button class="close-button" onclick="closeZone3Modal()">x</button>
+                                </div>
+                                <label for="timer-input">Auto-Sprinkler Timer (Seconds):</label>
+                                <input type="number" id="zone3Timer" min="0" max="10000" step="5" value="300" oninput="setTime(this.value)">
+                                <br>
+                                <button id="activateZone3Sprinkler">Activate</button>
                             </div>
-                            <label for="timer-input">Auto-Sprinkler Timer (Seconds):</label>
-                            <input type="number" id="zone2Timer" min="0" max="10000" step="5" value="30" oninput="setTime(this.value)">
-                            <br>
-                            <button id="activateZone2Sprinkler">Activate</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row3">
-                <div class="left-container-blue">ZONE 3</div>
-                <div class="right-container">
-                    <div class="flex-container">
-                        <svg width="95px" height="95px" viewBox="0 0 42 42" class="donut">
-                            <circle id="c15" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="100 0" stroke-dashoffset="25"></circle>
-                            <circle id="c16" cx="21" cy="21" r="15.91549430918954" stroke-dasharray="0 100" stroke-dashoffset="75"></circle>
-                            <g class="chart-image">
-                                <foreignObject x="6" y="6" width="34" height="34">
-                                    <div class="button-container">
-                                        <button class="sprinkler-button" id="zone3Button" ondblclick="openZone3Modal()"></button>
-                                    </div>
-                                </foreignObject>
-                            </g>
-                        </svg>
-                        <div class="overlay" id="zone3Overlay"></div>
-                        <div class="modalZone3" id="zone3Modal">
-                            <div class="modal-header">
-                                <button class="close-button" onclick="closeZone3Modal()">x</button>
-                            </div>
-                            <label for="timer-input">Auto-Sprinkler Timer (Seconds):</label>
-                            <input type="number" id="zone3Timer" min="0" max="10000" step="5" value="30" oninput="setTime(this.value)">
-                            <br>
-                            <button id="activateZone3Sprinkler">Activate</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-
-    
+        <div class="emergency-controls-container">Emergency Controls
+            <div class="layout3">
+                <button id="emergency-feed-button">Feed All</button>
+                <button id="close-gate">Close Gates</button>
+                <button id="open-gate">Open Gates</button>
+                <div id="helpFeed">Tip: Double Click Animal Feed Button to Automate</div>
+            </div>
+            <div class="layout4" style="display: none;">
+                <button id="on-sprinkler">Water All Zones</button>
+                <div id="helpSprinkler">Tip: Double Click Sprinkler Button to Automate</div>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
